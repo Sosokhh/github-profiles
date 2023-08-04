@@ -1,0 +1,30 @@
+<div class="container">
+  <form class="user-form">
+    <input type="text" name="username" [(ngModel)]="username" placeholder="Search a Github User" (keyup.enter)="onSubmit()">
+  </form>
+
+  <div class="card" *ngIf="showCard">
+    <div>
+      <img [src]="user.avatar_url" alt="" class="avatar">
+    </div>
+    <div class="user-info">
+      <h2>{{user.name}}</h2>
+      <p>{{user.bio}}</p>
+
+      <ul>
+        <li> {{user.followers}} <strong>Followers</strong></li>
+        <li> {{user.following}} <strong>Following</strong></li>
+        <li> {{user.public_repos}} <strong>Repos</strong></li>
+      </ul>
+
+      <div id="repos">
+        <a class="repo" *ngFor="let repo of repos" [href]="repo.html_url">{{repo.name}}</a>
+      </div>
+    </div>
+  </div>
+
+    <div class="card" *ngIf="errorMessage">
+      <h1> {{ errorMessage }} </h1>
+    </div>
+
+</div>
